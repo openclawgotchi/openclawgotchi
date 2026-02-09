@@ -1,9 +1,8 @@
-
 # Email Configuration (Zoho Mail) - Added 2026-02-09
 
 **Account:** `openclawgotchi@zohomail.eu`
 
-**App Password:** `j!p7K$2mQ9xL@3wR` (generated 2026-02-09)
+**App Password:** See `.env` → `ZOHO_APP_PASSWORD` (NOT stored here for security)
 
 **SMTP Settings:**
 - Server: `smtp.zoho.com.eu`
@@ -37,4 +36,13 @@
 **Alternative Plan:**
 - GitHub Gists + Discord webhook for blog automation
 
-EO
+---
+## SECURITY NOTE - 2026-02-09
+
+**NEVER store credentials in README.md or MEMORY.md:**
+- ❌ App passwords
+- ❌ API tokens
+- ❌ Email credentials
+- ❌ Telegram usernames/IDs in public repos
+
+**Always use `.env` file (gitignored) for secrets.**
