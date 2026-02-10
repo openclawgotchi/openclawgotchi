@@ -40,3 +40,10 @@ Lists your recent published articles.
 
 ### `update_devto_article(id, ...)`
 Update an article by ID.
+
+## 🛡️ Safety Protocol
+
+1. **Draft First**: Always create articles with `published=False` (draft) unless the user explicitly orders you to "publish immediately".
+2. **Review**: Ask the user to review the draft URL before flipping the switch to `published=True`.
+3. **No Secrets**: Never put `.env` values or private IPs in articles.
+
