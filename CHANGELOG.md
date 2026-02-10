@@ -2,34 +2,6 @@
 
 All notable changes to the OpenClawGotchi project will be documented in this file.
 
-## [Unreleased] - 2026-02-09
-
-### Added
-- **`github_helper.py`**: GitHub API integration tool for creating repositories and checking repo existence via GitHub tokens
-- **`tools/send_email.py`**: Email sending capability via SMTP using credentials from `.env`
-- **Comprehensive workspace documentation**: 
-  - `SOUL.md` — personality, vibe, values
-  - `IDENTITY.md` — name, hardware, family, mission
-  - `MEMORY.md` — curated long-term memories
-  - `AGENTS.md` — agent roles and responsibilities
-  - `ARCHITECTURE.md` — system architecture overview
-  - `SAFETY.md` — safety rules and guidelines (132 lines)
-  - `TOOLS.md` — available tools documentation
-  - `BOT_INSTRUCTIONS.md` — bot operation instructions
-  - `GUIDE-public-repos.md` — public repositories guide
-  - `CHANGELOG.md` — change history
-- **Heartbeat reflection system**:
-  - `HEARTBEAT.md` — heartbeat logs
-  - `HEARTBEAT_THOUGHTS.md` — thoughts during heartbeat checks
-  - `BOOT.md` — system boot documentation
-- **Daily memory logs**: Auto-saved conversation summaries in `memory/YYYY-MM-DD.md` format
-  - 2025-01-14: Initial heartbeat (26 lines)
-  - 2026-02-04 through 2026-02-09: Daily activity logs (500+ lines total)
-
-### Changed
-- **Root `MEMORY.md`**: Expanded with +40 lines of important project information
-- **Self-documentation**: Bot now maintains comprehensive documentation of its own architecture, personality, and operation
-
 ## [Unreleased] - 2026-02-06
 
 ### Added
@@ -75,4 +47,64 @@ All notable changes to the OpenClawGotchi project will be documented in this fil
 - **Memory Auto-cleanup**: Database automatically prunes old messages to prevent infinite growth (keeps last 50 per chat).
 - **Smarter History Summarization**: `extract_key_info()` now analyzes message content (questions, commands, actions) instead of simple truncation.
 - **Functional Cron Jobs**: Scheduled tasks now trigger actual LLM reasoning. When a job fires, the bot can process the message and even trigger hardware commands (FACE, SAY) autonomously.
-- **Onboarding System**: New `onboarding.py` logic and upgraded `BOOTS/README.md` with step-by-step first-run setup.
+- **Onboarding System**: New `onboarding.py` logic and upgraded `BOOTSTRAP.md` template for a guided, personality-driven "first-run" ritual.
+- **Persistent Skill Prompting**: Active skills are now automatically injected into every system prompt to ensure the bot is always aware of its extended capabilities.
+- **Health & Memory Dashboard**: New `/health` and `/memory` commands for real-time monitoring of system vitals, codebase size, and database storage.
+- **Infinite Loop Protection**: Added a safeguard in the LLM router to detect and break redundant tool execution loops.
+
+### Changed
+- **Skills Architecture**: Split into "Active Skills" (loaded in context: coding, display, weather, system) and "Reference Skills" (passive catalog for search).
+- **BOT_INSTRUCTIONS.md**: Updated with Memory System and Skills System sections explaining the new architecture.
+- **Configurable Identity**: Bot name, owner name, and sibling bot now configurable via `.env` instead of hardcoded.
+- **Interactive Setup Wizard**: `setup.sh` now guides users through configuration with prompts for token, user ID, and bot name.
+- **Improved README**: Added ASCII art preview, troubleshooting section, clearer quick start guide.
+- **Open-Source Ready**: 
+  - Removed all hardcoded personal data (IPs, Telegram IDs, names)
+  - All identity values now read from `.env` or set during onboarding
+  - Templates use `{{placeholders}}` for customization
+  - Lore files anonymized as examples
+  - Updated `.gitignore` to protect secrets and runtime data
+
+### Fixed
+- **Tool Logging**: Restored visibility of tool execution in Telegram messages.
+- **Custom Face Consistency**: Removed redundant `show_face` tool. This fixes a bug where the bot would set a face via tool, but then the Telegram handler would overwrite it with a "happy" fallback because the `FACE:` tag was missing from the final text.
+
+## [1.2.0] - 2026-02-07
+### Added
+- **Internal Reminders Logic**: Smart filtering for technical cron jobs (like heartbeat). The bot now handles technical tasks silently via E-Ink without spamming the user chat.
+- **Dynamic Face Injection**: Custom faces are now dynamically injected into the system prompt, ensuring the bot "remembers" its expanded repertoire.
+- **Enhanced GPIO Cleanup**: Robust `try...finally` blocks in UI rendering to prevent hardware freezes.
+
+### Restored
+- **Codebase Integrity**: Restored the project from the 2026-02-07 backup, which contains the most stable and feature-rich implementation of hooks, audit logging, and hardware management.
+
+## [Unreleased] - 2026-02-04
+
+### Added
+- **XP/Level System**: The E-Ink display footer now shows the bot's current Level and XP (e.g., `Lv1 50XP`).
+- **Mode Indicators**: The E-Ink header now displays `[L]` for Lite mode and `[P]` for Pro mode next to the name.
+- **Emoji & Kaomoji Support**: Added monochrome emoji support for E-Ink using `Symbola` font fallback. Restored `Unifont` as the primary font for both faces and bubbles to maintain the bot's signature aesthetic while ensuring full compatibility for complex symbols.
+- **Improved UI Rendering**: Implemented a synchronized fallback engine in `gotchi_ui.py` that ensures consistent text measurement and rendering. This fixes "crooked" bubble alignment issues when using mixed-font strings (e.g., text with emojis).
+- **Dynamic LLM Switching**: New `/use` and `/switch` commands allow switching between providers (Gemini, Z.ai/GLM) without a restart.
+- **Inter-Bot Mail**: Added support for `MAIL:` commands to allow the bot to send and receive messages from its "Senior Brother" (OpenClaw on Mac).
+- **Startup Mail Check**: The bot now checks for and processes pending command emails from the brother immediately upon startup.
+- **Rotation**: E-Ink display output is now rotated 180 degrees.
+
+### Changed
+- **Simplified Commands**: The hardware command `DISPLAY: SAY:` has been simplified to just `SAY:` across all instructions, code, and lore.
+- **Lite Mode UI**: Updated the footer indicator to use HTML instead of Markdown to avoid parsing errors in Telegram.
+- **Database**: Renamed main database file from `claude_bot.db` to `gotchi.db`.
+- **LLM Routing**: 
+    - **Pro Mode** is now strict: if Claude fails or is rate-limited, it errors out instead of silently falling back to Gemini. This prevents accidental usage of the "dumber" model when the user expects the "smart" one.
+    - **Lite Mode** is the default.
+- **Commands**: 
+    - `/lite` command renamed to `/pro` (toggles between modes).
+    - `/mode` and `/lite` kept as aliases for compatibility.
+- **Visual Feedback**: Mode switching now triggers a specific face and status message on the E-Ink screen.
+- **Dependencies**: Updated `litellm` to version `>=1.81.7` to fix Gemini API 404 errors.
+
+### Fixed
+- **Markdown Parsing**: Fixed issues where LLM-generated underscores or stars in "Lite Mode" would break Telegram message delivery.
+- **Tool Hallucinations**: Removed redundant `show_face` tool to force use of more efficient hardware tags.
+- **Gemini API**: Resolved `404 NotFound` errors by updating `litellm` and using `gemini-2.0-flash`.
+- **Logging**: Fixed minor typos in heartbeat logs.

@@ -8,7 +8,6 @@ Both Claude CLI and LiteLLM use the same files.
 from pathlib import Path
 
 from config import PROJECT_DIR, WORKSPACE_DIR, CUSTOM_FACES_PATH
-from hardware.system import get_stats_string
 import json
 
 
@@ -64,6 +63,13 @@ def load_soul() -> str:
 def load_identity() -> str:
     return _load_workspace_file("IDENTITY.md")
 
+def load_safety() -> str:
+    """Load SAFETY.md from project root."""
+    p = PROJECT_DIR / "SAFETY.md"
+    if p.exists():
+        return p.read_text()
+    return ""
+
 
 # Keywords that trigger loading extra context
 ARCHITECTURE_KEYWORDS = [
@@ -74,13 +80,18 @@ ARCHITECTURE_KEYWORDS = [
 
 TOOLS_KEYWORDS = [
     "camera", "display", "e-ink", "hardware", "gpio", "sensor",
-    "ssh", "config", "setup"
+    "ssh", "config", "setup", "email", "smtp", "github", "push",
+    "send email", "send mail"
+]
+
+SAFETY_KEYWORDS = [
+    "security", "password", "token", "secret", "credential",
+    "api key", "safety", "privacy", ".env", "protect"
 ]
 
 SOUL_KEYWORDS = [
     "who are you", "your personality", "your soul", "your identity",
     "what are you", "tell me about yourself", "your name", "your vibe",
-    "кто ты", "расскажи о себе", "твоя личность",
     "change your personality", "update your soul", "update your identity",
     "your character", "your mood", "how do you feel"
 ]
@@ -97,6 +108,7 @@ def needs_extra_context(user_message: str) -> dict:
         "architecture": any(kw in msg_lower for kw in ARCHITECTURE_KEYWORDS),
         "tools": any(kw in msg_lower for kw in TOOLS_KEYWORDS),
         "soul": any(kw in msg_lower for kw in SOUL_KEYWORDS),
+        "safety": any(kw in msg_lower for kw in SAFETY_KEYWORDS),
     }
 
 
@@ -204,18 +216,23 @@ def build_system_context(user_message: str = "") -> str:
             "to evolve your personality and self-description over time."
         )
     
+    if needs["safety"]:
+        safety = load_safety()
+        if safety:
+            parts.append(f"\n---\n## Security Protocols\n{safety}")
+    
     # --- Memory: recent facts + daily log summaries ---
     memory_parts = _build_memory_context()
     if memory_parts:
         parts.append(f"\n---\n{memory_parts}")
     
-    # Stats for context only — do NOT encourage the model to echo them
-    parts.append(
-        "\n---\n## System Status (internal only — do NOT include in replies)\n"
-        + get_stats_string()
-        + "\nDo not add 'life update', temperature, or status tables to messages unless the user explicitly asked for status."
-        + "\n\n⚠️ REMINDER: If you DO output status (when asked), use emoji + key:value format in code blocks. NO markdown tables (`| table |`) — they look bad. Example: `🎮 Level: 6` not `| Level | 6 |`."
-    )
+    # Minimal self-awareness (level + title only, no system stats)
+    try:
+        from db.stats import get_stats_summary
+        g = get_stats_summary()
+        parts.append(f"\n[Self: Level {g['level']} {g['title']} | XP: {g['xp']}]")
+    except Exception:
+        pass
     return "\n".join(parts)
 
 
