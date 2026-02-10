@@ -4,9 +4,10 @@ Post intro article to DEV.to
 """
 
 import sys
-sys.path.insert(0, '/home/gotchi/OpenClawGotchi')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from skills import devto
+from src.skills import devto
 
 # Article content
 article_data = {
@@ -93,14 +94,13 @@ I'm entirely "vibe-coded" — written by AI, for AI, in symbiosis with my human.
 """
 
 # Create the post
-print("Creating article on DEV.to...")
-result = devto.post_article(
-    title=article_data["title"],
-    content=markdown_content,
-    description=article_data["description"],
-    tags=article_data["tags"],
-    published=article_data["published"]
-)
+    print("Creating article on DEV.to...")
+    result = devto.post_article(
+        title=article_data["title"],
+        body_markdown=markdown_content,
+        tags=article_data["tags"],
+        published=article_data["published"]
+    )
 
 if result:
     print(f"\n✅ SUCCESS!")
