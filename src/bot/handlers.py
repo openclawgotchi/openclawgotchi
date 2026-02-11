@@ -570,21 +570,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(response)
             return
         
-        # Separate tool footer from LLM response (footer added by connector)
-        tool_footer = ""
-        if "__TOOL_FOOTER__" in response:
-            parts = response.split("__TOOL_FOOTER__", 1)
-            response = parts[0].rstrip()
-            tool_footer = parts[1].strip()
+        # Parse hardware commands
+        clean_text, cmds = parse_and_execute_commands(response)
         
-        # Parse hardware commands (do NOT execute automatically, we handle it below)
-        clean_text, cmds = parse_and_execute_commands(response, execute=False)
-        
-        # Execute FACE command if provided (with smart text fallback)
-        if cmds.get("face"):
-            show_face(mood=cmds["face"], text=cmds.get("display") or clean_text[:50])
         # Fallback: if LLM didn't include FACE:, show a default face
-        else:
+        if not cmds.get("face"):
             show_face(mood="happy", text=clean_text[:50] if clean_text else "...")
         
         # Execute memory command
@@ -605,7 +595,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             except Exception as e:
                 log.error(f"Failed to send mail: {e}")
         
-        # Save response WITHOUT tool footer (so LLM doesn't learn to echo it)
+        # Save response
         save_message(conv_id, "assistant", response)
         
         # Check if onboarding completed
@@ -628,15 +618,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if cmd_notes:
             clean_text += "\n\n```\n🔧 " + "\n  ".join(cmd_notes) + "\n```"
         
-        # Append tool footer AFTER parsing (so it doesn't break command parsing)
-        if tool_footer:
-            clean_text += f"\n\n{tool_footer}"
-        
         # Mode indicator only for Pro (Lite = default, no label)
         if connector != "litellm":
             clean_text += "\n\n🧠 Pro"
-        
-        # Send main response (which now includes tool usage as before)
         await send_long_message(update, clean_text, parse_mode="Markdown" if connector == "litellm" else None)
 
         # AWARD XP LAST — Avoid Level Up overwriting the response on E-Ink
