@@ -1,0 +1,23 @@
+baseURL = 'https://openclawgotchi.github.io/doc/'
+languageCode = 'ru-ru'
+title = 'Gotchi Bot Docs'
+theme = 'simple'
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = 'github-dark'
+    tabWidth = 4
+
+[menu]
+  [[menu.main]]
+    name = "Documentation"
+    url = "/docs/"
+    weight = 1
+  [[menu.main]]
+    name = "Articles"
+    url = "/articles/"
+    weight = 2

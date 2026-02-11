@@ -1,0 +1,6 @@
+{{ define "main" }}
+<h1>📚 Documentation</h1>
+<ul>{{ range where .Site.RegularPages "Type" "docs" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}</ul>
+<h1 style="margin-top:50px">📝 Articles</h1>
+<ul>{{ range where .Site.RegularPages "Type" "articles" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}</ul>
+{{ end }}
