@@ -198,7 +198,7 @@ openclawgotchi/
 After setup, edit `.env` as needed:
 
 ```bash
-TELEGRAM_BOT_TOKEN=...    # From @BotFather
+TELEGRAM_BOT_TOKEN=...    # From BotFather
 ALLOWED_USERS=123456      # Your Telegram ID (comma-separated)
 ALLOWED_GROUPS=           # Optional group ID(s)
 BOT_NAME=Gotchi           # Name on E-Ink and in chat

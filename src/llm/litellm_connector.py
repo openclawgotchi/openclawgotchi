@@ -9,7 +9,7 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from config import PROJECT_DIR, WORKSPACE_DIR, ENABLE_LITELLM_TOOLS
+from config import PROJECT_DIR, WORKSPACE_DIR, ENABLE_LITELLM_TOOLS, LLM_TIMEOUT
 from llm.base import LLMConnector, LLMError
 
 log = logging.getLogger(__name__)
@@ -95,7 +95,7 @@ def _sanitize_string(s: str, max_len: int = 10000) -> str:
 # TOOLS
 # ============================================================
 
-def execute_bash(command: str, timeout: int = 240) -> str:
+def execute_bash(command: str, timeout: int = 999) -> str:
     """Execute a shell command."""
     # Validate
     if not command or not command.strip():
@@ -109,7 +109,7 @@ def execute_bash(command: str, timeout: int = 240) -> str:
         return "Error: Command blocked for safety. Use safer alternatives."
     
     # Limit timeout
-    timeout = min(timeout, 300)  # Max 5 minutes
+    timeout = min(timeout, 999)  # Max 16 minutes
     
     try:
         result = subprocess.run(
@@ -1077,25 +1077,20 @@ def _format_tool_action(func_name: str, args: dict, result: str) -> str:
 
 
 def _build_tool_footer(actions: list[str]) -> str:
-    """Build premium tool usage footer for Telegram message."""
+    """Build compact tool usage footer inside a code block."""
     # Skip show_face — it's visual, user sees it on the display
-    visible = [a for a in actions if not a.startswith("😎 face:")]
+    visible = [a for a in actions if not a.strip().startswith("🎨 face:") and not a.strip().startswith("😎 face:")]
     
     if not visible:
         return ""
     
-    # Premium layout: bold header and bulleted list
-    title = f"🛠️ *Tool usage ({len(visible)}):*"
-    action_lines = []
-    
-    for action in visible[:8]:  # Max 8 to keep it compact
-        # Use bullets for a professional look
-        action_lines.append(f"• {action}")
-        
-    if len(visible) > 8:
-        action_lines.append(f"• ... +{len(visible) - 8} more")
-        
-    return f"\n{title}\n" + "\n".join(action_lines)
+    lines = ["```", f"🔧 Tool usage ({len(visible)}):"]
+    for action in visible:
+        # Escape backticks to avoid breaking the code block
+        safe = (action or "").replace("`", "'")
+        lines.append(f"  {safe}")
+    lines.append("```")
+    return "\n".join(lines)
 
 
 # ============================================================
@@ -1182,7 +1177,7 @@ class LiteLLMConnector(LLMConnector):
                 kwargs = {
                     "model": self.model,
                     "messages": messages,
-                    "timeout": 240,
+                    "timeout": LLM_TIMEOUT,
                 }
                 if ENABLE_LITELLM_TOOLS:
                     kwargs["tools"] = TOOLS
@@ -1209,7 +1204,11 @@ class LiteLLMConnector(LLMConnector):
                         tool_calls_count += 1
                         if tool_calls_count > MAX_TOOL_CALLS:
                             log.warning(f"[LiteLLM] Tool call limit reached ({MAX_TOOL_CALLS})")
-                            return "Error: Too many tool calls. Stopping for safety."
+                            msg = "Error: Too many tool calls. Stopping for safety."
+                            if tool_actions:
+                                footer = _build_tool_footer(tool_actions)
+                                msg = f"{msg}\n\n__TOOL_FOOTER__\n{footer}"
+                            return msg
                         
                         func_name = tool_call.function.name
                         
@@ -1283,7 +1282,7 @@ class LiteLLMConnector(LLMConnector):
                     # Append tool usage summary if any tools were called
                     if tool_actions:
                         footer = _build_tool_footer(tool_actions)
-                        final = f"{final}\n\n{footer}"
+                        final = f"{final}\n\n__TOOL_FOOTER__\n{footer}"
                     
                     return final
                     
@@ -1305,7 +1304,15 @@ class LiteLLMConnector(LLMConnector):
                         continue  # Retry the same turn
                 
                 # Don't crash on API errors, return error message
-                return f"Error: LLM API failed: {err_str[:200]}"
+                msg = f"Error: LLM API failed: {err_str[:200]}"
+                if tool_actions:
+                    footer = _build_tool_footer(tool_actions)
+                    msg = f"{msg}\n\n__TOOL_FOOTER__\n{footer}"
+                return msg
         
         log.warning(f"[LiteLLM] Max turns ({MAX_TURNS}) reached, {tool_calls_count} tool calls")
-        return "I made too many attempts. Please try a simpler request."
+        msg = "I made too many attempts. Please try a simpler request."
+        if tool_actions:
+            footer = _build_tool_footer(tool_actions)
+            msg = f"{msg}\n\n__TOOL_FOOTER__\n{footer}"
+        return msg

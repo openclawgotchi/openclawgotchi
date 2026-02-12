@@ -3,6 +3,7 @@ Telegram command and message handlers.
 """
 
 import logging
+import re
 
 from telegram import Update
 from telegram.constants import ChatAction
@@ -570,6 +571,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(response)
             return
         
+        # Separate tool footer from LLM response
+        tool_footer = ""
+        if "__TOOL_FOOTER__" in response:
+            parts = response.split("__TOOL_FOOTER__", 1)
+            response = parts[0].rstrip()
+            tool_footer = parts[1].strip()
+        
         # Parse hardware commands
         clean_text, cmds = parse_and_execute_commands(response)
         
@@ -618,18 +626,21 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if cmd_notes:
             clean_text += "\n\n```\n🔧 " + "\n  ".join(cmd_notes) + "\n```"
         
-        # Mode indicator only for Pro (Lite = default, no label)
         if connector != "litellm":
             clean_text += "\n\n🧠 Pro"
+            
+        # Append tool usage summary if exists
+        if tool_footer:
+            clean_text += "\n\n" + tool_footer
+            
         await send_long_message(update, clean_text, parse_mode="Markdown" if connector == "litellm" else None)
 
         # AWARD XP LAST — Avoid Level Up overwriting the response on E-Ink
         from db.stats import on_message_answered, on_tool_use
         on_message_answered()
         
-        # Count tool actions from response footer for XP bonus
-        import re
-        tool_match = re.search(r'Tool usage \((\d+)\):', response)
+        tool_source = tool_footer or response
+        tool_match = re.search(r'Tool usage \((\d+)\):', tool_source)
         if tool_match:
             on_tool_use(int(tool_match.group(1)))
         # Also count parsed commands (MAIL:, REMEMBER:) as tool-like actions
