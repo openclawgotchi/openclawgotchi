@@ -15,9 +15,9 @@ theme = 'simple'
 [menu]
   [[menu.main]]
     name = "Documentation"
-    url = "/doc/docs/"
+    url = "/docs/"
     weight = 1
   [[menu.main]]
     name = "Articles"
-    url = "/doc/articles/"
+    url = "/articles/"
     weight = 2
