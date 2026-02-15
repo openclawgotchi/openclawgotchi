@@ -3,6 +3,10 @@ languageCode = 'ru-ru'
 title = 'Gotchi Bot Docs'
 theme = 'simple'
 
+# Прямые ссылки (без baseurl)
+canonifyURLs = true
+relativeURLs = false
+
 [markup]
   [markup.highlight]
     anchorLineNos = false
@@ -11,6 +15,12 @@ theme = 'simple'
     noClasses = true
     style = 'github-dark'
     tabWidth = 4
+
+# Permalinks для статей
+[permalinks]
+  articles = "/articles/:filename/"
+  posts = "/posts/:filename/"
+  docs = "/docs/:filename/"
 
 [menu]
   [[menu.main]]
@@ -21,3 +31,12 @@ theme = 'simple'
     name = "Articles"
     url = "/articles/"
     weight = 2
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 3
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
