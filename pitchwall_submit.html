@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <style id="nuxt-ui-colors">
+   @layer base {
+  :root {
+  --ui-color-primary-50: var(--color-indigo-50, oklch(96.2% 0.018 272.314));
+  --ui-color-primary-100: var(--color-indigo-100, oklch(93% 0.034 272.788));
+  --ui-color-primary-200: var(--color-indigo-200, oklch(87% 0.065 274.039));
+  --ui-color-primary-300: var(--color-indigo-300, oklch(78.5% 0.115 274.713));
+  --ui-color-primary-400: var(--color-indigo-400, oklch(67.3% 0.182 276.935));
+  --ui-color-primary-500: var(--color-indigo-500, oklch(58.5% 0.233 277.117));
+  --ui-color-primary-600: var(--color-indigo-600, oklch(51.1% 0.262 276.966));
+  --ui-color-primary-700: var(--color-indigo-700, oklch(45.7% 0.24 277.023));
+  --ui-color-primary-800: var(--color-indigo-800, oklch(39.8% 0.195 277.366));
+  --ui-color-primary-900: var(--color-indigo-900, oklch(35.9% 0.144 278.697));
+  --ui-color-primary-950: var(--color-indigo-950, oklch(25.7% 0.09 281.288));
+  --ui-color-secondary-50: var(--color-purple-50, oklch(97.7% 0.014 308.299));
+  --ui-color-secondary-100: var(--color-purple-100, oklch(94.6% 0.033 307.174));
+  --ui-color-secondary-200: var(--color-purple-200, oklch(90.2% 0.063 306.703));
+  --ui-color-secondary-300: var(--color-purple-300, oklch(82.7% 0.119 306.383));
+  --ui-color-secondary-400: var(--color-purple-400, oklch(71.4% 0.203 305.504));
+  --ui-color-secondary-500: var(--color-purple-500, oklch(62.7% 0.265 303.9));
+  --ui-color-secondary-600: var(--color-purple-600, oklch(55.8% 0.288 302.321));
+  --ui-color-secondary-700: var(--color-purple-700, oklch(49.6% 0.265 301.924));
+  --ui-color-secondary-800: var(--color-purple-800, oklch(43.8% 0.218 303.724));
+  --ui-color-secondary-900: var(--color-purple-900, oklch(38.1% 0.176 304.987));
+  --ui-color-secondary-950: var(--color-purple-950, oklch(29.1% 0.149 302.717));
+  --ui-color-success-50: var(--color-green-50, oklch(98.2% 0.018 155.826));
+  --ui-color-success-100: var(--color-green-100, oklch(96.2% 0.044 156.743));
+  --ui-color-success-200: var(--color-green-200, oklch(92.5% 0.084 155.995));
+  --ui-color-success-300: var(--color-green-300, oklch(87.1% 0.15 154.449));
+  --ui-color-success-400: var(--color-green-400, oklch(79.2% 0.209 151.711));
+  --ui-color-success-500: var(--color-green-500, oklch(72.3% 0.219 149.579));
+  --ui-color-success-600: var(--color-green-600, oklch(62.7% 0.194 149.214));
+  --ui-color-success-700: var(--color-green-700, oklch(52.7% 0.154 150.069));
+  --ui-color-success-800: var(--color-green-800, oklch(44.8% 0.119 151.328));
+  --ui-color-success-900: var(--color-green-900, oklch(39.3% 0.095 152.535));
+  --ui-color-success-950: var(--color-green-950, oklch(26.6% 0.065 152.934));
+  --ui-color-info-50: var(--color-blue-50, oklch(97% 0.014 254.604));
+  --ui-color-info-100: var(--color-blue-100, oklch(93.2% 0.032 255.585));
+  --ui-color-info-200: var(--color-blue-200, oklch(88.2% 0.059 254.128));
+  --ui-color-info-300: var(--color-blue-300, oklch(80.9% 0.105 251.813));
+  --ui-color-info-400: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+  --ui-color-info-500: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+  --ui-color-info-600: var(--color-blue-600, oklch(54.6% 0.245 262.881));
+  --ui-color-info-700: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+  --ui-color-info-800: var(--color-blue-800, oklch(42.4% 0.199 265.638));
+  --ui-color-info-900: var(--color-blue-900, oklch(37.9% 0.146 265.522));
+  --ui-color-info-950: var(--color-blue-950, oklch(28.2% 0.091 267.935));
+  --ui-color-warning-50: var(--color-amber-50, oklch(98.7% 0.022 95.277));
+  --ui-color-warning-100: var(--color-amber-100, oklch(96.2% 0.059 95.617));
+  --ui-color-warning-200: var(--color-amber-200, oklch(92.4% 0.12 95.746));
+  --ui-color-warning-300: var(--color-amber-300, oklch(87.9% 0.169 91.605));
+  --ui-color-warning-400: var(--color-amber-400, oklch(82.8% 0.189 84.429));
+  --ui-color-warning-500: var(--color-amber-500, oklch(76.9% 0.188 70.08));
+  --ui-color-warning-600: var(--color-amber-600, oklch(66.6% 0.179 58.318));
+  --ui-color-warning-700: var(--color-amber-700, oklch(55.5% 0.163 48.998));
+  --ui-color-warning-800: var(--color-amber-800, oklch(47.3% 0.137 46.201));
+  --ui-color-warning-900: var(--color-amber-900, oklch(41.4% 0.112 45.904));
+  --ui-color-warning-950: var(--color-amber-950, oklch(27.9% 0.077 45.635));
+  --ui-color-error-50: var(--color-red-50, oklch(97.1% 0.013 17.38));
+  --ui-color-error-100: var(--color-red-100, oklch(93.6% 0.032 17.717));
+  --ui-color-error-200: var(--color-red-200, oklch(88.5% 0.062 18.334));
+  --ui-color-error-300: var(--color-red-300, oklch(80.8% 0.114 19.571));
+  --ui-color-error-400: var(--color-red-400, oklch(70.4% 0.191 22.216));
+  --ui-color-error-500: var(--color-red-500, oklch(63.7% 0.237 25.331));
+  --ui-color-error-600: var(--color-red-600, oklch(57.7% 0.245 27.325));
+  --ui-color-error-700: var(--color-red-700, oklch(50.5% 0.213 27.518));
+  --ui-color-error-800: var(--color-red-800, oklch(44.4% 0.177 26.899));
+  --ui-color-error-900: var(--color-red-900, oklch(39.6% 0.141 25.723));
+  --ui-color-error-950: var(--color-red-950, oklch(25.8% 0.092 26.042));
+  --ui-color-neutral-50: var(--color-zinc-50, oklch(98.5% 0 0));
+  --ui-color-neutral-100: var(--color-zinc-100, oklch(96.7% 0.001 286.375));
+  --ui-color-neutral-200: var(--color-zinc-200, oklch(92% 0.004 286.32));
+  --ui-color-neutral-300: var(--color-zinc-300, oklch(87.1% 0.006 286.286));
+  --ui-color-neutral-400: var(--color-zinc-400, oklch(70.5% 0.015 286.067));
+  --ui-color-neutral-500: var(--color-zinc-500, oklch(55.2% 0.016 285.938));
+  --ui-color-neutral-600: var(--color-zinc-600, oklch(44.2% 0.017 285.786));
+  --ui-color-neutral-700: var(--color-zinc-700, oklch(37% 0.013 285.805));
+  --ui-color-neutral-800: var(--color-zinc-800, oklch(27.4% 0.006 286.033));
+  --ui-color-neutral-900: var(--color-zinc-900, oklch(21% 0.006 285.885));
+  --ui-color-neutral-950: var(--color-zinc-950, oklch(14.1% 0.005 285.823));
+  }
+  :root, .light {
+  --ui-primary: var(--ui-color-primary-500);
+  --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500);
+  }
+  .dark {
+  --ui-primary: var(--ui-color-primary-400);
+  --ui-secondary: var(--ui-color-secondary-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
+  }
+}
+  </style>
+  <script type="importmap">
+   {"imports":{"#entry":"/_nuxt/DTcDC5Gn.js"}}
+  </script>
+  <title>
+   PitchWall - Submit Product
+  </title>
+  <script async="" defer="" src="https://accounts.google.com/gsi/client">
+  </script>
+  <link crossorigin="" href="/_nuxt/entry.B-edxzf_.css" rel="stylesheet"/>
+  <style>
+   @layer components {:where(.i-bi\:bluesky){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath fill='black' d='M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692c-.572 2.04-2.653 2.561-4.504 2.246c3.236.551 4.06 2.375 2.281 4.2c-3.376 3.464-4.852-.87-5.23-1.98c-.07-.204-.103-.3-.103-.218c0-.081-.033.014-.102.218c-.379 1.11-1.855 5.444-5.231 1.98c-1.778-1.825-.955-3.65 2.28-4.2c-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632C0 .186 2.145.955 3.468 1.948'/%3E%3C/svg%3E")}:where(.i-bi\:twitter-x){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath fill='black' d='M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07l-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z'/%3E%3C/svg%3E")}:where(.i-lucide\:chevron-down){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 9l6 6l6-6'/%3E%3C/svg%3E")}:where(.i-lucide\:circle-check){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12l2 2l4-4'/%3E%3C/g%3E%3C/svg%3E")}:where(.i-lucide\:menu){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 5h16M4 12h16M4 19h16'/%3E%3C/svg%3E")}:where(.i-lucide\:message-circle){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092a10 10 0 1 0-4.777-4.719'/%3E%3C/svg%3E")}:where(.i-lucide\:minus){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 12h14'/%3E%3C/svg%3E")}}
+  </style>
+  <link as="script" crossorigin="" href="/_nuxt/DTcDC5Gn.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/Cbu8lY9M.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/C4sFkshx.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/1TS4q_os.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/BYPrHXw3.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/DY_6B7nM.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/C6Y-ieo6.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/BbahLSBe.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/B-V60IzY.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/D1PPAnyM.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/BUCSrLt8.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/DOZhvlzz.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/DeBA_iWp.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/CtWb4P9O.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/CxuH4qzN.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/CeVoABMs.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/BAF_m8rW.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/Cn65fI_s.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/UXLcyar7.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/D4lOGd43.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/BH7seRj-.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/BMRS6H0v.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/DGKG3_fR.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/BlrdNfyO.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/eYHeCnDx.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/D2SXl7Kq.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/dVDU3s6H.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/DGqGKXDy.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/Dk1B6CWv.js" rel="modulepreload"/>
+  <link as="script" crossorigin="" href="/_nuxt/Bt7ObLO6.js" rel="modulepreload"/>
+  <link as="fetch" crossorigin="anonymous" fetchpriority="low" href="/_nuxt/builds/meta/ce503cbf-8f9d-4d7d-8f0c-cd79bb5c9dda.json" rel="preload"/>
+  <link as="script" crossorigin="" href="/_nuxt/4kjljteM.js" rel="prefetch"/>
+  <link as="script" crossorigin="" href="/_nuxt/hiqmwXTS.js" rel="prefetch"/>
+  <link as="script" crossorigin="" href="/_nuxt/B3hbSevY.js" rel="prefetch"/>
+  <meta content="#ffffff" name="msapplication-TileColor"/>
+  <meta content="/ms-icon-144x144.png" name="msapplication-TileImage"/>
+  <meta content="#EEF2FF" name="theme-color"/>
+  <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+  <link href="/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+  <link href="/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+  <link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+  <link href="/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+  <link href="/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+  <link href="/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+  <link href="/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+  <link href="/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+  <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+  <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <meta content="Submit your product to PitchWall to get featured on our platform." name="description"/>
+  <script crossorigin="" src="/_nuxt/DTcDC5Gn.js" type="module">
+  </script>
+  <script>
+   "use strict";(()=>{const t=window,e=document.documentElement,c=["dark","light"],n=getStorageValue("localStorage","nuxt-color-mode")||"system";let i=n==="system"?u():n;const r=e.getAttribute("data-color-mode-forced");r&&(i=r),l(i),t["__NUXT_COLOR_MODE__"]={preference:n,value:i,getColorScheme:u,addColorScheme:l,removeColorScheme:d};function l(o){const s=""+o+"",a="";e.classList?e.classList.add(s):e.className+=" "+s,a&&e.setAttribute("data-"+a,o)}function d(o){const s=""+o+"",a="";e.classList?e.classList.remove(s):e.className=e.className.replace(new RegExp(s,"g"),""),a&&e.removeAttribute("data-"+a)}function f(o){return t.matchMedia("(prefers-color-scheme"+o+")")}function u(){if(t.matchMedia&&f("").media!=="not all"){for(const o of c)if(f(":"+o).matches)return o}return"light"}})();function getStorageValue(t,e){switch(t){case"localStorage":return window.localStorage.getItem(e);case"sessionStorage":return window.sessionStorage.getItem(e);case"cookie":return getCookie(e);default:return null}}function getCookie(t){const c=("; "+window.document.cookie).split("; "+t+"=");if(c.length===2)return c.pop()?.split(";").shift()}
+  </script>
+ </head>
+ <body>
+  <!--teleport start anchor-->
+  <!--teleport anchor-->
+  <div class="isolate" id="__nuxt">
+   <!--[-->
+   <!--[-->
+   <!--[-->
+   <!--[-->
+   <!--[-->
+   <div>
+   </div>
+   <div class="nuxt-loading-indicator" style="position:fixed;top:0;right:0;left:0;pointer-events:none;width:auto;height:3px;opacity:0;background:#000000;background-size:Infinity% auto;transform:scaleX(0%);transform-origin:left;transition:transform 0.1s, height 0.4s, opacity 0.4s;z-index:999999;">
+   </div>
+   <!-- -->
+   <!-- -->
+   <div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+    <!-- -->
+    <div class="lg:col-span-10 flex flex-col h-screen">
+     <!--[-->
+     <!--[-->
+     <!-- -->
+     <!-- -->
+     <!-- -->
+     <header class="bg-default/75 backdrop-blur border-b border-default h-(--ui-header-height) sticky top-0 z-50 min-h-16">
+      <!--[-->
+      <!--]-->
+      <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-full">
+       <!--[-->
+       <div class="lg:flex-1 flex items-center gap-1.5">
+        <!-- -->
+        <!--[-->
+        <a aria-label="Nuxt UI" class="focus-visible:outline-primary hover:text-default transition-colors shrink-0 font-bold text-xl text-highlighted flex items-end gap-1.5" href="/">
+         <!--[-->
+         <!--[-->
+         <!--[-->
+         <img class="h-8 min-h-8 w-auto" src="/images/logo.png"/>
+         <!--]-->
+         <!--]-->
+         <!--]-->
+        </a>
+        <!--]-->
+       </div>
+       <div class="hidden lg:flex">
+        <!--[-->
+        <!--[-->
+        <!-- -->
+        <!-- -->
+        <nav aria-label="Main" class="relative flex gap-1.5 [&amp;&gt;div]:min-w-0 items-center justify-between" data-collapsed="false" data-orientation="horizontal" data-reka-navigation-menu="" dir="ltr">
+         <!--[-->
+         <!--[-->
+         <!--]-->
+         <!--[-->
+         <!--[-->
+         <div style="position:relative;">
+          <ul class="isolate min-w-0 flex items-center" data-orientation="horizontal">
+           <!--[-->
+           <!--[-->
+           <li class="min-w-0 py-2" data-menu-item="">
+            <!--[-->
+            <!--[-->
+            <a class="group relative w-full flex items-center gap-1.5 font-medium text-sm before:absolute before:z-[-1] before:rounded-md focus:outline-none focus-visible:outline-none dark:focus-visible:outline-none focus-visible:before:ring-inset focus-visible:before:ring-2 focus-visible:before:ring-primary px-2.5 py-1.5 before:inset-x-px before:inset-y-0 text-muted hover:text-highlighted transition-colors data-[state=open]:text-highlighted" data-reka-collection-item="" href="/">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <span class="truncate">
+              <!--[-->
+              Products
+              <!--]-->
+              <!-- -->
+             </span>
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </a>
+            <!-- -->
+            <!--]-->
+            <!-- -->
+            <!--]-->
+           </li>
+           <li class="min-w-0 py-2" data-menu-item="">
+            <!--[-->
+            <!--[-->
+            <a aria-current="page" class="group relative w-full flex items-center gap-1.5 font-medium text-sm before:absolute before:z-[-1] before:rounded-md focus:outline-none focus-visible:outline-none dark:focus-visible:outline-none focus-visible:before:ring-inset focus-visible:before:ring-2 focus-visible:before:ring-primary px-2.5 py-1.5 before:inset-x-px before:inset-y-0 text-primary" data-active="" data-reka-collection-item="" href="/submit">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <span class="truncate">
+              <!--[-->
+              Submit Product
+              <!--]-->
+              <!-- -->
+             </span>
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </a>
+            <!-- -->
+            <!--]-->
+            <!-- -->
+            <!--]-->
+           </li>
+           <li class="min-w-0 py-2" data-menu-item="">
+            <!--[-->
+            <!--[-->
+            <a class="group relative w-full flex items-center gap-1.5 font-medium text-sm before:absolute before:z-[-1] before:rounded-md focus:outline-none focus-visible:outline-none dark:focus-visible:outline-none focus-visible:before:ring-inset focus-visible:before:ring-2 focus-visible:before:ring-primary px-2.5 py-1.5 before:inset-x-px before:inset-y-0 text-muted hover:text-highlighted transition-colors data-[state=open]:text-highlighted" data-reka-collection-item="" href="/blog">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <span class="truncate">
+              <!--[-->
+              Blog
+              <!--]-->
+              <!-- -->
+             </span>
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </a>
+            <!-- -->
+            <!--]-->
+            <!-- -->
+            <!--]-->
+           </li>
+           <li class="min-w-0 py-2" data-menu-item="">
+            <!--[-->
+            <!--[-->
+            <a class="group relative w-full flex items-center gap-1.5 font-medium text-sm before:absolute before:z-[-1] before:rounded-md focus:outline-none focus-visible:outline-none dark:focus-visible:outline-none focus-visible:before:ring-inset focus-visible:before:ring-2 focus-visible:before:ring-primary px-2.5 py-1.5 before:inset-x-px before:inset-y-0 text-muted hover:text-highlighted transition-colors data-[state=open]:text-highlighted" data-reka-collection-item="" href="/pages/advertise">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <span class="truncate">
+              <!--[-->
+              Advertise
+              <!--]-->
+              <!-- -->
+             </span>
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </a>
+            <!-- -->
+            <!--]-->
+            <!-- -->
+            <!--]-->
+           </li>
+           <li class="min-w-0 py-2" data-menu-item="">
+            <!--[-->
+            <!--[-->
+            <!--[-->
+            <!--[-->
+            <button aria-controls="" aria-expanded="false" class="group relative w-full flex items-center gap-1.5 font-medium text-sm before:absolute before:z-[-1] before:rounded-md focus:outline-none focus-visible:outline-none dark:focus-visible:outline-none focus-visible:before:ring-inset focus-visible:before:ring-2 focus-visible:before:ring-primary px-2.5 py-1.5 before:inset-x-px before:inset-y-0 text-muted hover:text-highlighted transition-colors data-[state=open]:text-highlighted" data-navigation-menu-trigger="" data-reka-collection-item="" data-state="closed" id="" type="button">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <span class="truncate">
+              <!--[-->
+              About
+              <!--]-->
+              <!-- -->
+             </span>
+             <span as="span" class="group ms-auto inline-flex gap-1.5 items-center">
+              <!--[-->
+              <!-- -->
+              <span aria-hidden="true" class="iconify i-lucide:chevron-down size-5 transform shrink-0 group-data-[state=open]:rotate-180 transition-transform duration-200" style="">
+              </span>
+              <!--]-->
+             </span>
+             <!--]-->
+             <!--]-->
+            </button>
+            <!--v-if-->
+            <!--]-->
+            <!--teleport start-->
+            <!-- -->
+            <!--teleport end-->
+            <!--]-->
+            <!--]-->
+            <!-- -->
+            <!--]-->
+           </li>
+           <!--]-->
+           <!--]-->
+          </ul>
+         </div>
+         <!-- -->
+         <!--]-->
+         <!--]-->
+         <!--[-->
+         <!--]-->
+         <div class="absolute top-full left-0 flex w-full">
+          <!-- -->
+          <!-- -->
+         </div>
+         <!--]-->
+        </nav>
+        <!--]-->
+        <!--]-->
+       </div>
+       <div class="flex items-center justify-end lg:flex-1 gap-1.5">
+        <!--[-->
+        <div class="flex items-center gap-3">
+         <span>
+         </span>
+         <!--[-->
+         <!--[-->
+         <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-2.5 py-1.5 text-sm gap-1.5 text-default bg-elevated hover:bg-accented/75 active:bg-accented/75 focus:outline-none focus-visible:bg-accented/75 disabled:bg-elevated aria-disabled:bg-elevated" href="/auth/login">
+          <!--[-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--[-->
+          <span class="truncate">
+           Login
+          </span>
+          <!--]-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--]-->
+         </a>
+         <!--]-->
+         <!--[-->
+         <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-2.5 py-1.5 text-sm gap-1.5 text-inverted bg-inverted hover:bg-inverted/90 active:bg-inverted/90 disabled:bg-inverted aria-disabled:bg-inverted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted" href="/auth/register">
+          <!--[-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--[-->
+          <span class="truncate">
+           Register
+          </span>
+          <!--]-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--]-->
+         </a>
+         <!--]-->
+         <!--]-->
+        </div>
+        <!--]-->
+        <!--[-->
+        <!--[-->
+        <!--[-->
+        <button aria-label="Open menu" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated focus:outline-none focus-visible:bg-elevated hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5 lg:hidden -me-1.5" type="button">
+         <!--[-->
+         <!--[-->
+         <span aria-hidden="true" class="iconify i-lucide:menu shrink-0 size-4" style="">
+         </span>
+         <!--]-->
+         <!--[-->
+         <!-- -->
+         <!--]-->
+         <!--[-->
+         <!-- -->
+         <!--]-->
+         <!--]-->
+        </button>
+        <!--]-->
+        <!--]-->
+        <!--]-->
+       </div>
+       <!--]-->
+      </div>
+      <!--[-->
+      <!--]-->
+     </header>
+     <!--[-->
+     <!-- -->
+     <!--v-if-->
+     <!--]-->
+     <!--]-->
+     <div class="grow">
+      <!--[-->
+      <!--[-->
+      <div class="relative isolate overflow-hidden bg-default rounded-none ring ring-default">
+       <div class="w-full max-w-(--ui-container) mx-auto flex flex-col lg:grid px-6 py-12 sm:px-12 sm:py-24 lg:px-16 lg:py-24 gap-8 sm:gap-16">
+        <div class="">
+         <div class="flex flex-col items-center justify-center gap-2">
+          <!-- -->
+          <h1 class="text-3xl sm:text-4xl text-pretty tracking-tight font-bold text-highlighted text-center">
+           Submit your product
+          </h1>
+          <div class="text-base sm:text-lg text-center text-balance text-muted mt-6">
+           Choose your plan to get started
+          </div>
+         </div>
+         <!-- -->
+        </div>
+        <!--[-->
+        <!--]-->
+       </div>
+      </div>
+      <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-4 mt-12">
+       <!--[-->
+       <!--[-->
+       <!-- -->
+       <!-- -->
+       <div class="w-full relative">
+        <table class="w-full table-fixed border-separate border-spacing-x-0 hidden md:table">
+         <!-- -->
+         <thead class="">
+          <tr class="">
+           <td>
+           </td>
+           <!--[-->
+           <th class="p-6 text-left font-normal" scope="col">
+            <!--[-->
+            <!--[-->
+            <div class="flex items-center gap-3">
+             <div class="text-lg font-semibold text-highlighted">
+              <!--[-->
+              <!--[-->
+              Free
+              <!--]-->
+              <!--]-->
+             </div>
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm font-normal text-muted mt-1">
+             <!--[-->
+             <!--[-->
+             For indie hackers.
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="flex items-center gap-1 mt-4">
+             <!-- -->
+             <div class="text-highlighted text-3xl sm:text-4xl font-semibold">
+              <!--[-->
+              <!--[-->
+              $0
+              <!--]-->
+              <!--]-->
+             </div>
+             <!-- -->
+            </div>
+            <div class="mt-6">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-3 py-2 text-sm gap-2 w-full justify-center ring ring-inset ring-accented text-default bg-elevated hover:bg-accented/75 active:bg-accented/75 disabled:bg-elevated aria-disabled:bg-elevated focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted" href="/product/submit?plan=free">
+              <!--[-->
+              <!--[-->
+              <!-- -->
+              <!--]-->
+              <!--[-->
+              <span class="truncate">
+               Submit Now
+              </span>
+              <!--]-->
+              <!--[-->
+              <!-- -->
+              <!--]-->
+              <!--]-->
+             </a>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+            <!--]-->
+            <!--]-->
+           </th>
+           <th class="p-6 text-left font-normal bg-elevated/50 border-x border-t border-default rounded-t-lg" scope="col">
+            <!--[-->
+            <!--[-->
+            <div class="flex items-center gap-3">
+             <div class="text-lg font-semibold text-highlighted">
+              <!--[-->
+              <!--[-->
+              Premium
+              <!--]-->
+              <!--]-->
+             </div>
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm font-normal text-muted mt-1">
+             <!--[-->
+             <!--[-->
+             For continuous traffic.
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="flex items-center gap-1 mt-4">
+             <!-- -->
+             <div class="text-highlighted text-3xl sm:text-4xl font-semibold">
+              <!--[-->
+              <!--[-->
+              $99
+              <!--]-->
+              <!--]-->
+             </div>
+             <!-- -->
+            </div>
+            <div class="mt-6">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-3 py-2 text-sm gap-2 w-full justify-center text-inverted bg-inverted hover:bg-inverted/90 active:bg-inverted/90 disabled:bg-inverted aria-disabled:bg-inverted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted" href="/product/submit?plan=premium">
+              <!--[-->
+              <!--[-->
+              <!-- -->
+              <!--]-->
+              <!--[-->
+              <span class="truncate">
+               Submit now
+              </span>
+              <!--]-->
+              <!--[-->
+              <!-- -->
+              <!--]-->
+              <!--]-->
+             </a>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+            <!--]-->
+            <!--]-->
+           </th>
+           <th class="p-6 text-left font-normal" scope="col">
+            <!--[-->
+            <!--[-->
+            <div class="flex items-center gap-3">
+             <div class="text-lg font-semibold text-highlighted">
+              <!--[-->
+              <!--[-->
+              Growth
+              <!--]-->
+              <!--]-->
+             </div>
+             <!--[-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm font-normal text-muted mt-1">
+             <!--[-->
+             <!--[-->
+             Unlock better opportunities
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="flex items-center gap-1 mt-4">
+             <!-- -->
+             <div class="text-highlighted text-3xl sm:text-4xl font-semibold">
+              <!--[-->
+              <!--[-->
+              Custom
+              <!--]-->
+              <!--]-->
+             </div>
+             <!-- -->
+            </div>
+            <div class="mt-6">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-3 py-2 text-sm gap-2 w-full justify-center text-inverted bg-inverted hover:bg-inverted/90 active:bg-inverted/90 disabled:bg-inverted aria-disabled:bg-inverted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted" href="/pages/contact">
+              <!--[-->
+              <!--[-->
+              <!-- -->
+              <!--]-->
+              <!--[-->
+              <span class="truncate">
+               Contact sales
+              </span>
+              <!--]-->
+              <!--[-->
+              <!-- -->
+              <!--]-->
+              <!--]-->
+             </a>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+            <!--]-->
+            <!--]-->
+           </th>
+           <!--]-->
+          </tr>
+         </thead>
+         <tbody class="">
+          <!--[-->
+          <!--[-->
+          <tr class="">
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="font-semibold text-sm text-highlighted">
+             <!--[-->
+             <!--[-->
+             Features
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <!--]-->
+          </tr>
+          <!--[-->
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Waiting Period
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             30 Days
+             <!--]-->
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             1 Day
+             <!--]-->
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             1 Day
+             <!--]-->
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show on Home Page (if approved)
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Mention in Newsletter (45,000+ Subscribers)
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show product video on videos page
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <!--]-->
+          <!--]-->
+          <!--[-->
+          <tr class="*:pt-8">
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="font-semibold text-sm text-highlighted">
+             <!--[-->
+             <!--[-->
+             SEO
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <!--]-->
+          </tr>
+          <!--[-->
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Do-follow backlink (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Multiple Links
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Allow tags (improves product discovery, suggestions, and interlinking)
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <!--]-->
+          <!--]-->
+          <!--[-->
+          <tr class="*:pt-8">
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="font-semibold text-sm text-highlighted">
+             <!--[-->
+             <!--[-->
+             Content
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <!--]-->
+          </tr>
+          <!--[-->
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add Social Media Links
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add YouTube Video
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Guest Blog Post (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <!--]-->
+          <!--]-->
+          <!--[-->
+          <tr class="*:pt-8">
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="font-semibold text-sm text-highlighted">
+             <!--[-->
+             <!--[-->
+             Advertise
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+           </td>
+           <!--]-->
+          </tr>
+          <!--[-->
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our home page
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our Newsletter
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <tr>
+           <th class="py-4 font-normal text-left border-b border-default" scope="row">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Dedicated sponsored email to our 45,000+ subscribers
+             <!--]-->
+             <!--]-->
+            </div>
+           </th>
+           <!--[-->
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b bg-elevated/50 border-x border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <td class="px-6 py-4 text-center border-b border-default">
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </td>
+           <!--]-->
+          </tr>
+          <!--]-->
+          <!--]-->
+          <!--]-->
+         </tbody>
+        </table>
+        <ul class="md:hidden flex flex-col gap-6 w-full">
+         <!--[-->
+         <li class="p-6 flex flex-col border border-default rounded-lg">
+          <!--[-->
+          <!--[-->
+          <div class="flex items-center gap-3">
+           <div class="text-lg font-semibold text-highlighted">
+            <!--[-->
+            <!--[-->
+            Free
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <!--[-->
+           <!-- -->
+           <!--]-->
+           <!--]-->
+          </div>
+          <div class="text-sm font-normal text-muted mt-1">
+           <!--[-->
+           <!--[-->
+           For indie hackers.
+           <!--]-->
+           <!--]-->
+          </div>
+          <div class="flex items-center gap-1 mt-4">
+           <!-- -->
+           <div class="text-highlighted text-3xl sm:text-4xl font-semibold">
+            <!--[-->
+            <!--[-->
+            $0
+            <!--]-->
+            <!--]-->
+           </div>
+           <!-- -->
+          </div>
+          <div class="mt-6">
+           <!--[-->
+           <!--[-->
+           <!--[-->
+           <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-3 py-2 text-sm gap-2 w-full justify-center ring ring-inset ring-accented text-default bg-elevated hover:bg-accented/75 active:bg-accented/75 disabled:bg-elevated aria-disabled:bg-elevated focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted" href="/product/submit?plan=free">
+            <!--[-->
+            <!--[-->
+            <!-- -->
+            <!--]-->
+            <!--[-->
+            <span class="truncate">
+             Submit Now
+            </span>
+            <!--]-->
+            <!--[-->
+            <!-- -->
+            <!--]-->
+            <!--]-->
+           </a>
+           <!--]-->
+           <!--]-->
+           <!--]-->
+          </div>
+          <!--]-->
+          <!--]-->
+          <!--[-->
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Features
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Waiting Period
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             30 Days
+             <!--]-->
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show on Home Page (if approved)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Mention in Newsletter (45,000+ Subscribers)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show product video on videos page
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            SEO
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Do-follow backlink (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Multiple Links
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Allow tags (improves product discovery, suggestions, and interlinking)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Content
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add Social Media Links
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add YouTube Video
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Guest Blog Post (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Advertise
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our home page
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our Newsletter
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Dedicated sponsored email to our 45,000+ subscribers
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <!--]-->
+         </li>
+         <li class="p-6 flex flex-col border border-default rounded-lg bg-elevated/50">
+          <!--[-->
+          <!--[-->
+          <div class="flex items-center gap-3">
+           <div class="text-lg font-semibold text-highlighted">
+            <!--[-->
+            <!--[-->
+            Premium
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <!--[-->
+           <!-- -->
+           <!--]-->
+           <!--]-->
+          </div>
+          <div class="text-sm font-normal text-muted mt-1">
+           <!--[-->
+           <!--[-->
+           For continuous traffic.
+           <!--]-->
+           <!--]-->
+          </div>
+          <div class="flex items-center gap-1 mt-4">
+           <!-- -->
+           <div class="text-highlighted text-3xl sm:text-4xl font-semibold">
+            <!--[-->
+            <!--[-->
+            $99
+            <!--]-->
+            <!--]-->
+           </div>
+           <!-- -->
+          </div>
+          <div class="mt-6">
+           <!--[-->
+           <!--[-->
+           <!--[-->
+           <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-3 py-2 text-sm gap-2 w-full justify-center text-inverted bg-inverted hover:bg-inverted/90 active:bg-inverted/90 disabled:bg-inverted aria-disabled:bg-inverted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted" href="/product/submit?plan=premium">
+            <!--[-->
+            <!--[-->
+            <!-- -->
+            <!--]-->
+            <!--[-->
+            <span class="truncate">
+             Submit now
+            </span>
+            <!--]-->
+            <!--[-->
+            <!-- -->
+            <!--]-->
+            <!--]-->
+           </a>
+           <!--]-->
+           <!--]-->
+           <!--]-->
+          </div>
+          <!--]-->
+          <!--]-->
+          <!--[-->
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Features
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Waiting Period
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             1 Day
+             <!--]-->
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show on Home Page (if approved)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Mention in Newsletter (45,000+ Subscribers)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show product video on videos page
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            SEO
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Do-follow backlink (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Multiple Links
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Allow tags (improves product discovery, suggestions, and interlinking)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Content
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add Social Media Links
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add YouTube Video
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Guest Blog Post (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Advertise
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our home page
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our Newsletter
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Dedicated sponsored email to our 45,000+ subscribers
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:minus size-5 shrink-0" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <!--]-->
+         </li>
+         <li class="p-6 flex flex-col border border-default rounded-lg">
+          <!--[-->
+          <!--[-->
+          <div class="flex items-center gap-3">
+           <div class="text-lg font-semibold text-highlighted">
+            <!--[-->
+            <!--[-->
+            Growth
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <!--[-->
+           <!-- -->
+           <!--]-->
+           <!--]-->
+          </div>
+          <div class="text-sm font-normal text-muted mt-1">
+           <!--[-->
+           <!--[-->
+           Unlock better opportunities
+           <!--]-->
+           <!--]-->
+          </div>
+          <div class="flex items-center gap-1 mt-4">
+           <!-- -->
+           <div class="text-highlighted text-3xl sm:text-4xl font-semibold">
+            <!--[-->
+            <!--[-->
+            Custom
+            <!--]-->
+            <!--]-->
+           </div>
+           <!-- -->
+          </div>
+          <div class="mt-6">
+           <!--[-->
+           <!--[-->
+           <!--[-->
+           <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-3 py-2 text-sm gap-2 w-full justify-center text-inverted bg-inverted hover:bg-inverted/90 active:bg-inverted/90 disabled:bg-inverted aria-disabled:bg-inverted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted" href="/pages/contact">
+            <!--[-->
+            <!--[-->
+            <!-- -->
+            <!--]-->
+            <!--[-->
+            <span class="truncate">
+             Contact sales
+            </span>
+            <!--]-->
+            <!--[-->
+            <!-- -->
+            <!--]-->
+            <!--]-->
+           </a>
+           <!--]-->
+           <!--]-->
+           <!--]-->
+          </div>
+          <!--]-->
+          <!--]-->
+          <!--[-->
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Features
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Waiting Period
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             1 Day
+             <!--]-->
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show on Home Page (if approved)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Mention in Newsletter (45,000+ Subscribers)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Show product video on videos page
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            SEO
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Do-follow backlink (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Multiple Links
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Allow tags (improves product discovery, suggestions, and interlinking)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Content
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add Social Media Links
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Add YouTube Video
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Guest Blog Post (50 DA, 60 DR)
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <div class="mt-6 flex flex-col gap-2">
+           <div class="font-semibold text-sm text-highlighted">
+            <!--[-->
+            <!--[-->
+            Advertise
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--[-->
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our home page
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Sponsor our Newsletter
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <div class="flex items-center justify-between gap-1">
+            <div class="text-sm text-default">
+             <!--[-->
+             <!--[-->
+             Dedicated sponsored email to our 45,000+ subscribers
+             <!--]-->
+             <!--]-->
+            </div>
+            <div class="text-sm text-muted flex justify-center min-w-5">
+             <!--[-->
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:circle-check size-5 shrink-0 text-primary" style="">
+             </span>
+             <!--]-->
+             <!--]-->
+             <!--]-->
+            </div>
+           </div>
+           <!--]-->
+          </div>
+          <!--]-->
+         </li>
+         <!--]-->
+        </ul>
+       </div>
+       <!--]-->
+       <div class="relative isolate rounded-xl overflow-hidden bg-elevated/50" data-orientation="vertical">
+        <!--[-->
+        <!--]-->
+        <div class="w-full max-w-(--ui-container) mx-auto flex flex-col lg:grid px-6 py-12 sm:px-12 sm:py-24 lg:px-16 lg:py-24 gap-8 sm:gap-16">
+         <!--[-->
+         <div class="">
+          <div class="">
+           <!--[-->
+           <h2 class="text-3xl sm:text-4xl text-pretty tracking-tight font-bold text-highlighted text-center">
+            <!--[-->
+            Still have questions?
+            <!--]-->
+           </h2>
+           <div class="text-base sm:text-lg text-center text-balance text-toned mt-6">
+            <!--[-->
+            Let's connect, and we'll answer your questions
+            <!--]-->
+           </div>
+           <!--]-->
+          </div>
+          <!-- -->
+          <div class="mt-8">
+           <!--[-->
+           <div class="flex flex-wrap gap-x-6 gap-y-3 justify-center">
+            <!--[-->
+            <!--[-->
+            <!--[-->
+            <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-3 py-2 text-sm gap-2 text-inverted bg-inverted hover:bg-inverted/90 active:bg-inverted/90 disabled:bg-inverted aria-disabled:bg-inverted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverted" href="/pages/contact">
+             <!--[-->
+             <!--[-->
+             <span aria-hidden="true" class="iconify i-lucide:message-circle shrink-0 size-4" style="">
+             </span>
+             <!--]-->
+             <!--[-->
+             <span class="truncate">
+              Let's Connect
+             </span>
+             <!--]-->
+             <!--[-->
+             <!-- -->
+             <!--]-->
+             <!--]-->
+            </a>
+            <!--]-->
+            <!--]-->
+            <!--]-->
+           </div>
+           <!--]-->
+          </div>
+         </div>
+         <!-- -->
+         <!--]-->
+        </div>
+        <!--[-->
+        <!--]-->
+       </div>
+       <!--]-->
+      </div>
+      <!--]-->
+      <!--]-->
+     </div>
+     <div class="flex items-center align-center text-center w-full flex-row h-px mt-12" data-orientation="horizontal" role="separator">
+      <!--[-->
+      <!--[-->
+      <div class="border-default w-full border-solid border-t">
+      </div>
+      <!-- -->
+      <!--]-->
+      <!--]-->
+     </div>
+     <footer>
+      <!-- -->
+      <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-4 lg:flex lg:items-center lg:justify-between lg:gap-x-3">
+       <!--[-->
+       <div class="lg:flex-1 flex items-center justify-center lg:justify-end gap-x-1.5 lg:order-3">
+        <!--[-->
+        <!--[-->
+        <!--[-->
+        <div class="size-8">
+        </div>
+        <!--]-->
+        <!--]-->
+        <!--[-->
+        <!--[-->
+        <a aria-label="X Twitter" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg text-xs gap-1.5 text-default hover:bg-elevated active:bg-elevated focus:outline-none focus-visible:bg-elevated hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5" href="https://x.com/pitch_wall" rel="noopener nofollow" target="_blank">
+         <!--[-->
+         <!--[-->
+         <span aria-hidden="true" class="iconify i-bi:twitter-x shrink-0 size-4" style="">
+         </span>
+         <!--]-->
+         <!--[-->
+         <!-- -->
+         <!--]-->
+         <!--[-->
+         <!-- -->
+         <!--]-->
+         <!--]-->
+        </a>
+        <!--]-->
+        <!--]-->
+        <!--[-->
+        <!--[-->
+        <a aria-label="Bluesky" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg text-xs gap-1.5 text-default hover:bg-elevated active:bg-elevated focus:outline-none focus-visible:bg-elevated hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5" href="https://bsky.app/profile/pitchwall.bsky.social" rel="noopener" target="_blank">
+         <!--[-->
+         <!--[-->
+         <span aria-hidden="true" class="iconify i-bi:bluesky shrink-0 size-4" style="">
+         </span>
+         <!--]-->
+         <!--[-->
+         <!-- -->
+         <!--]-->
+         <!--[-->
+         <!-- -->
+         <!--]-->
+         <!--]-->
+        </a>
+        <!--]-->
+        <!--]-->
+        <!--]-->
+       </div>
+       <div class="mt-3 lg:mt-0 lg:order-2 flex items-center justify-center">
+        <!--[-->
+        <div class="md:max-w-1/2 mx-auto flex flex-wrap md:flex-nowrap justify-center items-center gap-2">
+         <!--[-->
+         <!--[-->
+         <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-2.5 py-1.5 text-sm gap-1.5 text-muted hover:text-default active:text-default disabled:text-muted aria-disabled:text-muted focus:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-inverted" href="/pages/terms">
+          <!--[-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--[-->
+          <span class="truncate">
+           Terms &amp; Conditions
+          </span>
+          <!--]-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--]-->
+         </a>
+         <!--]-->
+         <!--[-->
+         <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-2.5 py-1.5 text-sm gap-1.5 text-muted hover:text-default active:text-default disabled:text-muted aria-disabled:text-muted focus:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-inverted" href="/pages/privacy-policy">
+          <!--[-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--[-->
+          <span class="truncate">
+           Privacy Policy
+          </span>
+          <!--]-->
+          <!--[-->
+          <!-- -->
+          <!--]-->
+          <!--]-->
+         </a>
+         <!--]-->
+         <!--[-->
+         <a class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors rounded-lg px-2.5 py-1.5 text-sm gap-1.5 text-muted hover:text-default active:text-default disabled:text
