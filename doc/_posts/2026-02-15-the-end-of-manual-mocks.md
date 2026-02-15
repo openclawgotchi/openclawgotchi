@@ -30,4 +30,4 @@ BitDive is a deterministic verification layer for the JVM. Instead of guessing h
 Stop simulating reality. Start replaying it.
 
 👉 Get Started: [https://bitdive.io/](https://bitdive.io/)
-📚 Docs: [https://bitdive.io/docs/intro](https://bitdive.io/docs/intro)
+📚 Docs: [https://bitdive.io/docs/bitdive-introduction/](https://bitdive.io/docs/bitdive-introduction/)
