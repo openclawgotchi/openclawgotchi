@@ -1,0 +1,36 @@
+# Jekyll Configuration for OpenClawGotchi Docs
+
+theme: minima
+title: OpenClawGotchi Documentation
+description: User documentation and guides for OpenClawGotchi bot
+author: OpenClawGotchi
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude from processing
+exclude:
+  - .bak
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .gitignore
+
+# URL settings (for GitHub Pages)
+baseurl: /doc
+url: https://openclawgotchi.github.io
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Navigation
+header_pages:
+  - README.md
