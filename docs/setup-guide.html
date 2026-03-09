@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка - OpenClawGotchi Documentation</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🔧 Установка и настройка</h1>
+            <p>Подробное руководство по установке OpenClawGotchi</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">← Главная</a></li>
+            <li><a href="commands.html">💬 Команды</a></li>
+            <li><a href="skills-dev.html">⚡ Разработка</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <section>
+            <h2>📋 Требования</h2>
+            
+            <div class="quick-start">
+                <h3>Оборудование</h3>
+                <ul>
+                    <li><strong>Raspberry Pi Zero 2W</strong> или выше (512MB RAM минимум)</li>
+                    <li><strong>Waveshare 2.13" E-Ink дисплей</strong> V4 или совместимый</li>
+                    <li><strong>Карта microSD</strong> минимум 16GB Class 10</li>
+                    <li><strong>Питание</strong> 5V 2A (для Zero 2W) или 5V 3A (для Pi 3/4)</li>
+                </ul>
+                
+                <h3>Программное обеспечение</h3>
+                <ul>
+                    <li><strong>Raspberry Pi OS Lite</strong> (64-bit) - рекомендуется</li>
+                    <li><strong>Python 3.9+</strong></li>
+                    <li><strong>Git</strong></li>
+                    <li><strong>pip</strong> (Python package manager)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <h2>🚀 Быстрая установка</h2>
+            
+            <div class="quick-start">
+                <h3>Шаг 1: Подготовка Raspberry Pi</h3>
+                <p>Установите Raspberry Pi OS Lite на карту microSD. Загрузите систему и подключитесь через SSH.</p>
+                
+                <h3>Шаг 2: Обновление системы</h3>
+                <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+                
+                <h3>Шаг 3: Установка зависимостей</h3>
+                <pre><code>sudo apt install -y python3-pip python3-venv git
+
+# Включите SPI и I2C для E-Ink дисплея
+sudo raspi-config</code></pre>
+                <p>В raspi-config выберите: <strong>Interface Options → SPI → Enable</strong> и <strong>Interface Options → I2C → Enable</strong></p>
+                
+                <h3>Шаг 4: Клонирование репозитория</h3>
+                <pre><code>git clone https://github.com/openclawgotchi/openclawgotchi.git
+cd openclawgotchi</code></pre>
+                
+                <h3>Шаг 5: Создание виртуального окружения</h3>
+                <pre><code>python3 -m venv venv
+source venv/bin/activate</code></pre>
+                
+                <h3>Шаг 6: Установка Python-зависимостей</h3>
+                <pre><code>pip install -r requirements.txt</code></pre>
+                
+                <h3>Шаг 7: Настройка окружения</h3>
+                <pre><code>cp .env.example .env
+nano .env</code></pre>
+                
+                <h3>Шаг 8: Получение Telegram Bot Token</h3>
+                <ol>
+                    <li>Откройте Telegram и найдите <strong>@BotFather</strong></li>
+                    <li>Отправьте команду <code>/newbot</code></li>
+                    <li>Следуйте инструкциям для создания бота</li>
+                    <li>Скопируйте полученный токен</li>
+                    <li>Вставьте токен в <code>.env</code> файл:</li>
+                </ol>
+                <pre><code>TELEGRAM_TOKEN=ваш_токен_здесь</code></pre>
+                
+                <h3>Шаг 9: Запуск бота</h3>
+                <pre><code>python src/main.py</code></pre>
+                
+                <p><strong>✅ Готово!</strong> Ваш бот теперь работает!</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>🔌 Подключение E-Ink дисплея</h2>
+            
+            <div class="quick-start">
+                <h3>Waveshare 2.13" E-Ink V4 Pinout</h3>
+                <pre><code>Display    →  Raspberry Pi
+VCC        →  3.3V
+GND        →  GND
+DIN/CLK    →  GPIO 11 (SCLK)
+DOUT/MOSI  →  GPIO 10 (MOSI)
+CS         →  GPIO 8  (CE0)
+DC         →  GPIO 25
+RES/RST    →  GPIO 17
+BUSY       →  GPIO 24</code></pre>
+                
+                <h3>Проверка подключения</h3>
+                <p>После подключения запустите тест дисплея:</p>
+                <pre><code>python tools/test_display.py</code></p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>⚙️ Конфигурация</h2>
+            
+            <div class="quick-start">
+                <h3>.env файл</h3>
+                <p>Основной файл конфигурации - <code>.env</code>. Вот основные параметры:</p>
+                
+                <pre><code># Telegram Bot
+TELEGRAM_TOKEN=ваш_токен_здесь
+
+# Discord Bot (опционально)
+# DISCORD_TOKEN=ваш_токен_здесь
+
+# OpenAI API (для AI-функций)
+OPENAI_API_KEY=ваш_ключ_здесь
+
+# Имя бота
+BOT_NAME=OpenClawGotchi
+
+# Владелец (ваш Telegram username)
+OWNER_USERNAME=ваш_username
+
+# Логирование
+LOG_LEVEL=INFO</code></pre>
+                
+                <h3>Настройка автозапуска</h3>
+                <p>Для автозапуска бота при загрузке системы используйте systemd:</p>
+                <pre><code>sudo cp setup/gotchi-bot.service /etc/systemd/system/
+sudo systemctl enable gotchi-bot
+sudo systemctl start gotchi-bot</code></pre>
+                
+                <h3>Проверка статуса</h3>
+                <pre><code>sudo systemctl status gotchi-bot</code></pre>
+            </div>
+        </section>
+        
+        <section>
+            <h2>🐛 Устранение проблем</h2>
+            
+            <div class="quick-start">
+                <h3>Бот не запускается</h3>
+                <ul>
+                    <li>Проверьте что токен в <code>.env</code> правильный</li>
+                    <li>Убедитесь что все зависимости установлены: <code>pip install -r requirements.txt</code></li>
+                    <li>Проверьте логи: <code>tail -f logs/gotchi.log</code></li>
+                </ul>
+                
+                <h3>Дисплей не работает</h3>
+                <ul>
+                    <li>Проверьте подключение проводов</li>
+                    <li>Убедитесь что SPI включён: <code>raspi-config</code></li>
+                    <li>Протестируйте дисплей: <code>python tools/test_display.py</code></li>
+                </ul>
+                
+                <h3>Бот отвечает медленно</h3>
+                <ul>
+                    <li>Проверьте нагрузку на CPU: <code>htop</code></li>
+                    <li>Убедитесь что достаточно свободной RAM</li>
+                    <li>Попробуйте отключить тяжёлые навыки</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <h2>📚 Следующие шаги</h2>
+            
+            <div class="docs-nav">
+                <a href="commands.html" class="doc-link">
+                    <h3>💬 Изучить команды</h3>
+                    <p>Полный список всех команд бота.</p>
+                </a>
+                
+                <a href="skills-dev.html" class="doc-link">
+                    <h3>⚡ Создать навык</h3>
+                    <p>Как создать собственный навык.</p>
+                </a>
+                
+                <a href="xp-memory.html" class="doc-link">
+                    <h3>🧠 XP и Память</h3>
+                    <p>Как работает система опыта.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OpenClawGotchi. Создано с ❤️ и AI</p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/openclawgotchi/openclawgotchi">GitHub</a> •
+                <a href="https://github.com/openclawgotchi/openclawgotchi/issues">Нужна помощь?</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

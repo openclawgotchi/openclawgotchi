@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClawGotchi Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            padding: 20px 30px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background: #f5f5f5;
+            color: #667eea;
+        }
+        
+        main {
+            padding: 60px 0;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        .quick-start {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .quick-start h2 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: #f8f8f2;
+        }
+        
+        .docs-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .doc-link {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+            display: block;
+        }
+        
+        .doc-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .doc-link h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: #2d2d2d;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🤖 OpenClawGotchi</h1>
+            <p>AI-бот с душой, памятью и способностью к саморазвитию</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#features">Возможности</a></li>
+            <li><a href="#quick-start">Быстрый старт</a></li>
+            <li><a href="#docs">Документация</a></li>
+            <li><a href="#hardware">Оборудование</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <section id="features" class="features">
+            <div class="feature">
+                <div class="feature-icon">💾</div>
+                <h3>Память</h3>
+                <p>Запоминает важные события, разговоры и контекст. Умеет извлекать уроки из прошлого опыта.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🎭</div>
+                <h3>Эмоции</h3>
+                <p>Показывает 24 разных настроения на E-Ink дисплее. Живой и отзывчивый собеседник.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🔧</div>
+                <h3>Навыки</h3>
+                <p>Расширяемая система навыков. Может делать почти всё - от погоды до управления GitHub.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <h3>Развитие</h3>
+                <p>XP-система и уровни развития. Бот растёт вместе с использованием.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🔄</div>
+                <h3>Саморазвитие</h3>
+                <p>Умеет редактировать свой собственный код и добавлять новые функции самостоятельно.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <h3>Общение</h3>
+                <p>Работает через Telegram. Всегда на связи и готов помочь.</p>
+            </div>
+        </section>
+        
+        <section id="quick-start" class="quick-start">
+            <h2>🚀 Быстрый старт</h2>
+            
+            <h3>1. Клонируйте репозиторий</h3>
+            <pre><code>git clone https://github.com/openclawgotchi/openclawgotchi.git
+cd openclawgotchi</code></pre>
+            
+            <h3>2. Установите зависимости</h3>
+            <pre><code>pip install -r requirements.txt</code></pre>
+            
+            <h3>3. Настройте окружение</h3>
+            <pre><code>cp .env.example .env
+nano .env</code></pre>
+            
+            <h3>4. Запустите бота</h3>
+            <pre><code>python src/main.py</code></pre>
+            
+            <p><strong>Готово!</strong> Ваш бот теперь работает и готов к общению!</p>
+        </section>
+        
+        <section id="docs">
+            <h2 style="margin-bottom: 30px; color: #667eea;">📚 Документация</h2>
+            <div class="docs-nav">
+                <a href="commands.md" class="doc-link">
+                    <h3>💬 Команды</h3>
+                    <p>Полный список всех команд бота и как их использовать.</p>
+                </a>
+                
+                <a href="setup-guide.md" class="doc-link">
+                    <h3>🔧 Установка</h3>
+                    <p>Подробное руководство по установке и настройке.</p>
+                </a>
+                
+                <a href="skills-dev.md" class="doc-link">
+                    <h3>⚡ Разработка навыков</h3>
+                    <p>Как создавать собственные навыки для бота.</p>
+                </a>
+                
+                <a href="xp-memory.md" class="doc-link">
+                    <h3>🧠 XP и Память</h3>
+                    <p>Как работает система опыта и долговременная память.</p>
+                </a>
+            </div>
+        </section>
+        
+        <section id="hardware" style="margin-top: 60px;">
+            <div class="quick-start">
+                <h2>🖥️ Оборудование</h2>
+                <p>Для работы OpenClawGotchi потребуется:</p>
+                <ul style="margin-top: 20px; margin-left: 20px;">
+                    <li><strong>Raspberry Pi Zero 2W</strong> (512MB RAM минимум)</li>
+                    <li><strong>Waveshare 2.13" E-Ink дисплей</strong> V4 или совместимый</li>
+                    <li><strong>Raspberry Pi OS Lite</strong> (64-bit)</li>
+                    <li><strong>Карта microSD</strong> минимум 16GB Class 10</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OpenClawGotchi. Создано с ❤️ и AI</p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/openclawgotchi/openclawgotchi">GitHub</a> •
+                <a href="https://github.com/openclawgotchi/openclawgotchi/issues">Issues</a> •
+                <a href="https://github.com/openclawgotchi/openclawgotchi/blob/main/LICENSE">License</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
