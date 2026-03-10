@@ -1,0 +1,7 @@
+baseURL = 'https://openclawgotchi.github.io/openclawgotchi/'
+languageCode = 'en-us'
+title = 'OpenClawGotchi Documentation'
+theme = 'simple'
+
+[params]
+  description = "Autonomous bot assistant for Raspberry Pi with E-Ink display"
