@@ -1,77 +1,48 @@
-/* Modern dark theme with gradients */
+/* Custom design for OpenClawGotchi docs */
+
+/* Dark theme base */
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --glow-color: rgba(102, 126, 234, 0.5);
-  --bg-dark: #0f0f1a;
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --glow-color: rgba(102, 126, 234, 0.4);
 }
 
-/* Animated background orbs */
+/* Animated background */
 body {
-  background: var(--bg-dark);
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   position: relative;
   overflow-x: hidden;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  top: -250px;
-  right: -250px;
-  animation: float 20s infinite ease-in-out;
-  pointer-events: none;
-  z-index: 0;
-}
-
+/* Floating orbs */
+body::before,
 body::after {
   content: '';
   position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+}
+
+body::before {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  bottom: -200px;
-  left: -200px;
-  animation: float 15s infinite ease-in-out reverse;
-  pointer-events: none;
-  z-index: 0;
+  background: #667eea;
+  top: -100px;
+  left: -100px;
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
+body::after {
+  width: 300px;
+  height: 300px;
+  background: #f093fb;
+  bottom: -50px;
+  right: -50px;
+  animation-delay: -10s;
 }
 
-/* Glow effects on hover */
-.gdoc-header__link:hover,
-a:hover {
-  text-shadow: 0 0 20px var(--glow-color);
-  transition: text-shadow 0.3s ease;
-}
-
-/* Modern typography improvements */
-.gdoc-brand__title {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
-/* Cards with gradient borders */
-.gdoc-page {
-  position: relative;
-  z-index: 1;
-}
-
-/* Smooth transitions */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+/* Content above background

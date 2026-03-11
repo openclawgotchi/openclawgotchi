@@ -1,0 +1,4 @@
+{{/* Custom header to include custom.css */}}
+{{ if .IsHome }}
+<link rel="stylesheet" href="{{ "custom.css" | relURL }}">
+{{ end }}
